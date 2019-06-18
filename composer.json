@@ -1,0 +1,44 @@
+{
+    "name": "timramseyjr/ebay",
+    "description": ":description",
+    "license": "license",
+    "authors": [
+        {
+            "name": "Tim Ramsey",
+            "email": "tim@truelightdesigns.com",
+            "homepage": "author homepage"
+        }
+    ],
+    "homepage": "https://github.com/timramseyjr/ebay",
+    "keywords": ["Laravel", "Ebay"],
+    "require": {
+        "dts/ebay-sdk-php": "~12.0|~13.0|~14.0|~15.0",
+        "anlutro/l4-settings": "^0.7.3",
+        "php": ">=5.5",
+        "illuminate/support": "~5"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~6.0",
+        "orchestra/testbench": "~3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "timramseyjr\\Ebay\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "timramseyjr\\Ebay\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "timramseyjr\\Ebay\\EbayServiceProvider"
+            ],
+            "aliases": {
+                "Ebay": "timramseyjr\\Ebay\\Facades\\Ebay"
+            }
+        }
+    }
+}
