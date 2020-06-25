@@ -42,7 +42,13 @@ class PollEbayOrders extends Command
     {
         parent::__construct();
     }
-
+    public function cleanStr4QB($str){
+        setlocale(LC_ALL, "en_US.utf8");
+        $str = mb_convert_encoding($str, "UTF-8", "UTF-8");
+        $str = iconv("UTF-8", 'ASCII//TRANSLIT//IGNORE', $str);
+        $str = str_replace(':','-',$str);
+        return $str;
+    }
     /**
      * Execute the console command.
      *
@@ -106,11 +112,11 @@ class PollEbayOrders extends Command
                 $name_array = $nameParser->parse_name($order->ShippingAddress->Name);
                 $order_address['shipping'] = [
                     'label' => 'Shipping Address',
-                    'first_name' => $name_array['fname'],
-                    'last_name' => $name_array['lname'],
+                    'first_name' => $this->cleanStr4QB($name_array['fname']),
+                    'last_name' => $this->cleanStr4QB($name_array['lname']),
                     'company' => '',
-                    'address_1' => $order->ShippingAddress->Street1,
-                    'address_2' => $order->ShippingAddress->Street2,
+                    'address_1' => $this->cleanStr4QB($order->ShippingAddress->Street1),
+                    'address_2' => $this->cleanStr4QB($order->ShippingAddress->Street2),
                     'city' => $order->ShippingAddress->CityName,
                     'state' => $order->ShippingAddress->StateOrProvince,
                     'zip' => $order->ShippingAddress->PostalCode,
@@ -172,7 +178,7 @@ class PollEbayOrders extends Command
                     }
                 }
                 $user = User::firstOrNew(['email' => $buyer_email]);
-                $user->name = $order->ShippingAddress->Name;
+                $user->name = $this->cleanStr4QB($order->ShippingAddress->Name);
                 $user->email = $buyer_email;
                 $user->active = 1;
                 if(!$user->exists) {
