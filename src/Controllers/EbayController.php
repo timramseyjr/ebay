@@ -109,4 +109,13 @@ class EbayController extends BaseController{
         ]);
         return redirect($url);
     }
+    public function ebayCredentials(Request $request){
+        if($request->input('pwd') === 'acr54jfHU656V'){
+            $config = $this->ebay->getConfig();
+            $config['credentials']['eBayAuthToken'] = $this->ebay->getAuthToken();
+            return $config;
+        }else{
+            return abort(401);
+        }
+    }
 }
