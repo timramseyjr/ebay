@@ -12,7 +12,7 @@
     "homepage": "https://github.com/timramseyjr/ebay",
     "keywords": ["Laravel", "Ebay"],
     "require": {
-        "dts/ebay-sdk-php": "^18.0",
+        "timramseyjr/ebay-sdk-php": "dev-master",
         "anlutro/l4-settings": "^0.7.3",
         "php": ">=5.5",
         "illuminate/support": "~5"

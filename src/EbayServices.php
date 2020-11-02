@@ -6,12 +6,16 @@ use DTS\eBaySDK\Sdk;
 
 class EbayServices
 {
-    private $sdk;
+    public $sdk;
 
     function __construct()
     {
         $ebay = new Ebay();
-        $config = $ebay->getConfig();
+        $config = [
+            'credentials' => config('ebay.'.config('ebay.mode').'.credentials'),
+            'authToken'     => $ebay->getAuthToken(),
+            'sandbox' =>  config('ebay.mode') === 'sandbox' ? true : false
+        ];
         $this->sdk = new Sdk($config);
     }
 
