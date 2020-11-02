@@ -20,7 +20,7 @@
         }
     ],
     "require": {
-        "dts/ebay-sdk-php": "dev-master",
+        "timramseyjr/ebay-sdk-php": "dev-master",
         "anlutro/l4-settings": "^0.7.3",
         "php": ">=5.5",
         "illuminate/support": "~5"
