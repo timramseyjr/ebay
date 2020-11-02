@@ -15,7 +15,7 @@
     "prefer-stable" : true,
     "repositories": [
         {
-            "type": "git",
+            "type": "vcs",
             "url": "https://github.com/timramseyjr/ebay-sdk-php.git"
         }
     ],
